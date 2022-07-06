@@ -1,39 +1,29 @@
 <template>
-  <div class="container">
+  <div class="container mx-auto">
     <h2 class="font-bold text-3xl text-center mt-10">Photo Management</h2>
+    <p class="text-center mt-8">Dummy landing page for photo management, you can access via user or admin as you want</p>
     <div class="flex flex-row mx-auto text-center w-6/12 justify-between mt-10">
       <button
         class="py-1 rounded-full w-4/12 user text-white font-semibold"
-        v-on:click="onAccessPage('user')"
+        v-on:click="onAccessPage('public')"
       >
-        Login Via User
+        Login Via Public
       </button>
       <button
         class="py-1 rounded-full w-4/12 admin text-white font-semibold"
+        v-on:click="onAccessPage('admin')"
       >
         Login Via Admin
       </button>
-    </div>
-    <div>
-      <admin />
-      <users />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import admin  from '../components/admin.vue';
-import users from '../components/users.vue'
-// import  AdminPage  from './admin/Admin.vue'
 
 export default Vue.extend({
   name: "IndexPage",
-  components: {
-    // AdminPage
-    admin,
-    users
-  },
 
   data() {
     return {};
@@ -45,7 +35,7 @@ export default Vue.extend({
 
   methods: {
     onAccessPage(access: string) {
-      console.log(access)
+        this.$router.push(`/${access}`)
     },
   },
 });
